@@ -18,7 +18,7 @@ const CountryLookup = () => {
   return (
     <div>
       {isLoading ? (
-        <img src="spinner.svg" alt="Loading..." className="h-6 text-center" />
+        <img src="/spinner.svg" alt="Loading..." className="h-6 text-center" />
       ) : (
         country
       )}
