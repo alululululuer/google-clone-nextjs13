@@ -1,6 +1,11 @@
 import Link from "next/link";
 
+import WebSearchResults from "@/components/WebSearchResults";
+
 const WebSearchPage = async ({ searchParams }) => {
+  //不要太频繁的发送请求 以防被ban
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   const response = await fetch(
     `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}`
   );
@@ -27,6 +32,6 @@ const WebSearchPage = async ({ searchParams }) => {
     );
   }
 
-  return <>{results && results.map((result) => <h1>{result.title}</h1>)}</>;
+  return <>{results && <WebSearchResults results={data} />}</>;
 };
 export default WebSearchPage;
