@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { RxCross2 } from "react-icons/rx";
@@ -13,13 +13,14 @@ const SearchBox = () => {
   const [term, setTerm] = useState(searchTerm || "");
 
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!term.trim()) return;
 
-    router.push(`/search/web?searchTerm=${term}`);
+    router.push(`${pathname}/?searchTerm=${term}`);
   };
 
   return (
