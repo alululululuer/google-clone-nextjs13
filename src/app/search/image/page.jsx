@@ -12,6 +12,12 @@ const ImageSearchPage = async ({ searchParams }) => {
     `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&searchType=image&start=${startIndex}`
   );
 
+  console.log(
+    "url: ",
+    `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&searchType=image&start=${startIndex}`
+  );
+  console.log("res: ", response);
+
   if (!response.ok) {
     console.log(response);
     throw new Error("Something went wrong.");
