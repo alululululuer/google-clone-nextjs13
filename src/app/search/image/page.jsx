@@ -12,11 +12,7 @@ const ImageSearchPage = async ({ searchParams }) => {
     `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&searchType=image&start=${startIndex}`
   );
 
-  console.log(
-    "url: ",
-    `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&searchType=image&start=${startIndex}`
-  );
-  console.log("res: ", response);
+  const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}&searchType=image&start=${startIndex}`;
 
   if (!response.ok) {
     console.log(response);
@@ -40,6 +36,11 @@ const ImageSearchPage = async ({ searchParams }) => {
     );
   }
 
-  return <>{results && <ImageSearchResults results={data} />}</>;
+  return (
+    <>
+      <p>{url}</p>
+      {results && <ImageSearchResults results={data} />}
+    </>
+  );
 };
 export default ImageSearchPage;
